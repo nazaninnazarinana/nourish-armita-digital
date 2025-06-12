@@ -2,8 +2,12 @@
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowDown } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import WhatsAppButton from '@/components/ui/WhatsAppButton';
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden">
       {/* Background Elements */}
@@ -19,37 +23,44 @@ const HeroSection = () => {
           <div className="text-white space-y-8 animate-fade-in">
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                Transform Your
-                <span className="block text-energy-300">Performance</span>
-                <span className="block">& Health</span>
+                {t('hero.title1')}
+                <span className="block text-energy-300">{t('hero.title2')}</span>
+                <span className="block">{t('hero.title3')}</span>
               </h1>
               <p className="text-xl text-health-100 max-w-lg">
-                Expert nutrition and sports consulting for athletes and individuals. 
-                Collaborating with national teams to optimize performance through science-based nutrition.
+                {t('hero.subtitle')}
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="bg-energy-500 hover:bg-energy-600 text-black font-semibold px-8 py-4 text-lg">
-                <Link to="/booking">Book Free Consultation</Link>
+                <Link to="/booking">{t('hero.cta1')}</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-health-800 px-8 py-4 text-lg">
-                <Link to="/services">Explore Services</Link>
+                <Link to="/services">{t('hero.cta2')}</Link>
+              </Button>
+            </div>
+
+            {/* Contact Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <WhatsAppButton />
+              <Button asChild variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-health-800">
+                <a href="tel:+4917687801557">📞 {t('contact.phone')}</a>
               </Button>
             </div>
 
             <div className="grid grid-cols-3 gap-8 pt-8">
               <div className="text-center">
                 <div className="text-3xl font-bold text-energy-300">500+</div>
-                <div className="text-health-200">Athletes Trained</div>
+                <div className="text-health-200">{t('hero.stats.athletes')}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-energy-300">15+</div>
-                <div className="text-health-200">National Teams</div>
+                <div className="text-health-200">{t('hero.stats.teams')}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-energy-300">98%</div>
-                <div className="text-health-200">Success Rate</div>
+                <div className="text-health-200">{t('hero.stats.success')}</div>
               </div>
             </div>
           </div>
