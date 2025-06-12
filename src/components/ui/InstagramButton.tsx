@@ -4,8 +4,7 @@ import { Instagram } from 'lucide-react';
 
 const InstagramButton = ({ className = '' }: { className?: string }) => {
   const handleInstagramClick = () => {
-    // Replace with actual Instagram handle when provided
-    window.open('https://instagram.com/clinicarmita', '_blank');
+    window.open('https://www.instagram.com/armitaclinic/', '_blank');
   };
 
   return (

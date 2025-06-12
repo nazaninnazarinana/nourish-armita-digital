@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
+import SportsNutrition from "./pages/SportsNutrition";
+import WeightManagement from "./pages/WeightManagement";
 import Products from "./pages/Products";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -31,6 +33,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/sports-nutrition" element={<SportsNutrition />} />
+            <Route path="/services/weight-management" element={<WeightManagement />} />
             <Route path="/products" element={<Products />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/booking" element={<Booking />} />
