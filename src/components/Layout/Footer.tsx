@@ -4,6 +4,7 @@ import { Mail, Phone } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import InstagramButton from '@/components/ui/InstagramButton';
+import TelegramButton from '@/components/ui/TelegramButton';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 
 const Footer = () => {
@@ -30,7 +31,7 @@ const Footer = () => {
             <div className="space-y-3 mb-6">
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-health-400" />
-                <a href="tel:+4917687801557" className="text-health-200 hover:text-white transition-colors">
+                <a href="tel:+989123443470" className="text-health-200 hover:text-white transition-colors">
                   {t('contact.phone')}
                 </a>
               </div>
@@ -43,6 +44,7 @@ const Footer = () => {
             </div>
             <div className="flex space-x-3 mb-4">
               <WhatsAppButton className="text-sm px-4 py-2" />
+              <TelegramButton className="text-sm px-4 py-2" />
               <InstagramButton className="text-sm px-4 py-2" />
             </div>
             <LanguageSwitcher />
@@ -52,12 +54,14 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">{t('footer.quick_links')}</h4>
             <ul className="space-y-2">
+              <li><Link to="/about" className="text-health-200 hover:text-white transition-colors">{t('nav.about')}</Link></li>
               <li><Link to="/services" className="text-health-200 hover:text-white transition-colors">{t('nav.services')}</Link></li>
               <li><Link to="/products" className="text-health-200 hover:text-white transition-colors">{t('nav.products')}</Link></li>
-              <li><Link to="/about" className="text-health-200 hover:text-white transition-colors">{t('nav.about')}</Link></li>
-              <li><Link to="/contact" className="text-health-200 hover:text-white transition-colors">{t('nav.contact')}</Link></li>
               <li><Link to="/booking" className="text-health-200 hover:text-white transition-colors">{t('nav.booking')}</Link></li>
+              <li><Link to="/diet-plan" className="text-health-200 hover:text-white transition-colors">{t('nav.diet_plan')}</Link></li>
+              <li><Link to="/consultation" className="text-health-200 hover:text-white transition-colors">{t('nav.consultation')}</Link></li>
               <li><Link to="/blog" className="text-health-200 hover:text-white transition-colors">{t('nav.blog')}</Link></li>
+              <li><Link to="/contact" className="text-health-200 hover:text-white transition-colors">{t('nav.contact')}</Link></li>
             </ul>
           </div>
 

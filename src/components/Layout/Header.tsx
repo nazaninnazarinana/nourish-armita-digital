@@ -3,17 +3,24 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Phone, Mail } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Products', href: '/products' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
+    { name: t('nav.home'), href: '/' },
+    { name: t('nav.about'), href: '/about' },
+    { name: t('nav.services'), href: '/services' },
+    { name: t('nav.products'), href: '/products' },
+    { name: t('nav.booking'), href: '/booking' },
+    { name: t('nav.diet_plan'), href: '/diet-plan' },
+    { name: t('nav.consultation'), href: '/consultation' },
+    { name: t('nav.blog'), href: '/blog' },
+    { name: t('nav.contact'), href: '/contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -26,15 +33,18 @@ const Header = () => {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
               <Phone className="h-4 w-4" />
-              <span>+1 (555) 123-4567</span>
+              <span>{t('contact.phone')}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Mail className="h-4 w-4" />
-              <span>info@clinicarmita.com</span>
+              <span>{t('contact.email')}</span>
             </div>
           </div>
-          <div className="hidden md:block">
-            <span>Professional Nutrition & Sports Consulting</span>
+          <div className="flex items-center space-x-4">
+            <LanguageSwitcher />
+            <div className="hidden md:block">
+              <span>Professional Nutrition & Sports Consulting</span>
+            </div>
           </div>
         </div>
       </div>
@@ -54,7 +64,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -70,10 +80,13 @@ const Header = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* CTA Buttons */}
+          <div className="hidden lg:flex items-center space-x-4">
             <Button asChild variant="outline" size="sm">
-              <Link to="/contact">Get Consultation</Link>
+              <Link to="/login">{t('nav.login')}</Link>
+            </Button>
+            <Button asChild variant="outline" size="sm">
+              <Link to="/admin">{t('nav.admin')}</Link>
             </Button>
             <Button asChild size="sm" className="bg-health-600 hover:bg-health-700">
               <Link to="/booking">Book Appointment</Link>
@@ -83,7 +96,7 @@ const Header = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2"
+            className="lg:hidden p-2"
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -91,7 +104,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-health-100">
+          <div className="lg:hidden mt-4 py-4 border-t border-health-100">
             <div className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <Link
@@ -107,7 +120,10 @@ const Header = () => {
               ))}
               <div className="flex flex-col space-y-2 pt-4">
                 <Button asChild variant="outline" size="sm">
-                  <Link to="/contact">Get Consultation</Link>
+                  <Link to="/login">{t('nav.login')}</Link>
+                </Button>
+                <Button asChild variant="outline" size="sm">
+                  <Link to="/admin">{t('nav.admin')}</Link>
                 </Button>
                 <Button asChild size="sm" className="bg-health-600 hover:bg-health-700">
                   <Link to="/booking">Book Appointment</Link>
